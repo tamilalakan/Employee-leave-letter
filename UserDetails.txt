@@ -1,0 +1,9 @@
+admin: Username: admin
+       Email: admin@gmail.com
+       Password: admin
+
+manager: Username: Hr
+         Email: Hr@gmail.com 
+         Password: manager12345
+         
+Create an Employee in JoinUp tab

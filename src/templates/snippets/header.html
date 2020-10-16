@@ -1,0 +1,277 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href='https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+{% load static %}
+
+<style type="text/css">
+
+
+a{
+  text-decoration: none;
+}
+
+
+
+/* HOME */
+.home{
+position: absolute;
+width: 42px;
+height: 17px;
+left: 1003px;
+top: 12px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+letter-spacing: 0.1em;
+/*text-decoration: none;*/
+color: #000000;
+}
+
+.home1
+{
+position: absolute;
+width: 49px;
+height: 17px;
+left: 920px;
+top: 12px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+letter-spacing: 0.1em;
+
+color: #000000;
+}
+
+
+
+/* LOGIN */
+.login
+{
+position: absolute;
+width: 43px;
+height: 17px;
+left: 1125px;
+top: 12px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+letter-spacing: 0.1em;
+
+color: #000000;
+}
+
+
+/* REGISTER */
+.register{
+  position: absolute;
+  width: 67px;
+  height: 17px;
+  left: 1240px;
+  top: 12px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.1em;
+
+  color: #000000;
+}
+
+/*ACCOUNT*/
+.account{
+  position: absolute;
+  width: 85px;
+  height: 18px;
+  left: 1025px;
+  top: 12px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+
+  letter-spacing: 0.1em;
+
+  color: #000000;
+}
+
+/*PROGRAM*/
+.program{
+position: absolute;
+width: 100px;
+height: 17px;
+left: 1110px;
+top: 12px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+letter-spacing: 0.1em;
+
+color: #000000;
+}
+
+.program1{
+position: absolute;
+width: 40px;
+height: 17px;
+left: 1128px;
+top: 12px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+letter-spacing: 0.1em;
+
+color: #000000;
+}
+
+/* LOGOUT */
+
+.logout{
+position: absolute;
+width: 50px;
+height: 17px;
+left: 1270px;
+top: 12px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 17px;
+letter-spacing: 0.1em;
+
+color: #000000;
+}
+
+/* Line 1 */
+.line1{
+position: absolute;
+width: 10px;
+height: 0px;
+left: 1082px;
+top: 18px;
+
+border: 1px solid #000000;
+transform: rotate(90deg);
+
+}
+
+/* Line 2 */
+.line2{
+position: absolute;
+width: 10px;
+height: 0px;
+left: 1210px;
+top: 18px;
+
+border: 1px solid #000000;
+transform: rotate(90deg);
+}
+
+.line22{
+  position: absolute;
+width: 10px;
+height: 0px;
+left: 1080px;
+top: 20px;
+
+border: 1px solid #000000;
+transform: rotate(90deg);
+}
+
+.line33{
+  position: absolute;
+width: 10px;
+height: 0px;
+left: 1225px;
+top: 20px;
+
+border: 1px solid #000000;
+transform: rotate(90deg);
+}
+
+
+
+
+.active1 {
+
+position: absolute;
+height: 30px;
+width: auto;
+border-bottom: 2px solid #000000;
+
+}
+
+.a:hover{
+text-decoration: none;
+color: #000000;      
+position: absolute;
+height: 30px;
+width: auto;
+border-bottom: 2px solid #000000;
+margin-bottom: auto;     
+}
+
+.dum{
+
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0.25, 0.50));
+}
+
+</style>
+
+
+<br><br><br><br><br>
+
+      {% if request.user.is_authenticated %}
+
+          <!-- <p style="color: #000;">Hello, {{request.user.username}} -->
+          <p class="line11"></p>
+          <p class="line22"></p>
+          <p class="line33"></p>
+
+
+          
+          <a class="home a {% if request.path == '/' %} active1 {% endif %}" href="{% url 'home' %}">Home</a>
+          {% if request.user.is_authenticated and request.user.is_staff %}
+            <a class="program1 a {% if request.path == '/approve' %} active1 {% endif %}" href="{% url 'approve' %}">Letters</a>
+          {% else %}
+            <a class="program a {% if request.path == '/letter' %} active1 {% endif %}" href="{% url 'letter' %}">Leave-taking</a>
+          {% endif %}
+
+          <a class="logout a {% if request.path == '/logout' %} active1 {% endif %}" href="{% url 'logout' %}">Logout</a>
+          
+        
+           
+      {% else %}
+          <a class="home a {% if request.path == '/' %} active1 {% endif %}" href="{% url 'home' %}">Home</a>
+          <p class="line1"></p>
+                    <a class="login a {% if request.path == '/login' %} active1 {% endif %}" href="{% url 'login' %}">Login</a>
+          <p class="line2"></p>
+
+          <a class="register a {% if request.path == '/register' %} active1 {% endif %}" href="{% url 'register' %}" >Join up</a>
+      {% endif %}
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>

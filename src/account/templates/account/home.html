@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>Home</title>
+<link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
+<style type="text/css">
+.name{
+	position: absolute;
+	width: 386px;
+	height: 22px;
+	left: 490px;
+	top: 222px;
+
+	font-family: monospace;
+	font-style: normal;
+	font-weight: 800;
+	font-size: 25px;
+	line-height: 19px;
+	text-align: center;
+	letter-spacing: 0.05em;
+
+	color: #000000;
+	}
+
+/* WELCOME Tamilalakan S */
+
+
+.name_login{
+	position: absolute;
+	width: 396px;
+	height: 22px;
+	left: 490px;
+	top: 222px;
+
+	font-family: monospace;
+	font-style: normal;
+	font-weight: 800;
+	font-size: 25px;
+	line-height: 19px;
+	text-align: center;
+	letter-spacing: 0.08em;
+
+	color: #000000;
+	}
+
+/* Rectangle 1 */
+.rectangle_1{
+	position: absolute;
+	width: 37px;
+	height: 32px;
+	left: 575px;
+	top: 281px;
+
+	background: #EEA2A2;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	filter: blur(4px);
+	}
+
+/* Rectangle 2 */
+.rectangle_2{
+	position: absolute;
+	width: 90px;
+	height: 72px;
+	left: 353px;
+	top: 290px;
+
+	background: #EEF077;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	filter: blur(4px);
+	border-radius: 50px;
+	}
+
+/* Rectangle 3 */
+.rectangle_3{
+	position: absolute;
+	width: 81px;
+	height: 56px;
+	left: 774px;
+	top: 424px;
+
+	background: #FBD36C;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+	}
+
+/* Rectangle 4 */
+.rectangle_4{
+	position: absolute;
+	width: 162px;
+	height: 23px;
+	left: 710px;
+	top: 199px;
+
+	background: #FBB0D4;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	filter: blur(4px);
+	}
+
+/* Rectangle 5 */
+.rectangle_5{
+	position: absolute;
+	width: 60px;
+	height: 42px;
+	left: 744px;
+	top: 309px;
+
+	background: #AFC6FF;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	filter: blur(4px);
+	}
+/* The present is theirs; the future, for which I really worked, is mine. */
+.word{
+
+position: absolute;
+width: 707px;
+height: 35px;
+left: 329px;
+top: 312px;
+
+font-family: monospace;
+font-style: normal;
+font-weight: bold;
+
+font-size: 16px;
+line-height: 20px;
+text-align: center;
+letter-spacing: 0.09em;
+
+color: #000000;
+
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+/* Line 2 */
+
+.line_1{
+position: absolute;
+width: 611px;
+height: 0px;
+left: 379px;
+top: 338px;
+
+border: 0.1px solid #000000;}
+</style>
+
+<p class="rectangle_1"></p>
+<p class="rectangle_2"></p>
+<p class="rectangle_3"></p>
+<p class="rectangle_4"></p>
+<p class="rectangle_5"></p>
+
+
+
+	
+
+	{% if request.user.is_authenticated %}
+    	<h1 class="name_login">Welcome, {{request.user.username}}</h1>
+<!--     	<form method="post"> {% csrf_token %}
+	    	<input type="submit" name="approved" vale="approved">
+	    	<input type="submit" name="reject" value="reject">
+    	</form>
+ -->
+
+    
+  {% else %}
+  	<h1 class="name">Welcome</h1>
+  	
+  {% endif %}
+
+<p class="word">The present is theirs; the future, for which I really worked, is mine.</p>
+
+
+
+{% endblock content %}

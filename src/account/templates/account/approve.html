@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>Approve</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+
+/* Float four columns side by side */
+.column {
+float: left;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 25%
+  padding: 0 0px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  padding: 26px;
+  text-align: left;
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+.card:hover{
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0.25, 0.50));
+}
+/*.form-control{
+		  position: relative;
+	  box-sizing: border-box;
+	  height: auto;
+	  padding: 10px;
+	  font-size: 16px;
+}*/
+</style>
+
+{% if request.user.is_authenticated and request.user.is_staff %}
+
+
+
+<div class="row">
+{% for i in details %}
+  
+  {% if not i.approve and i.description and i.start_date %}
+	  <div class="column">
+	    <div class="card">
+	    	
+		    	<form method="post">{% csrf_token %}
+				<pre><h2 style="text-align: center;"><u>Leave Application</u></h2></pre><br><br>
+				<pre><b>To:     </b>   Manager</pre>
+				<pre><b>From:   </b>   {{i.username}}</pre>
+				<pre><b>cc:     </b>   Nil</pre><br>
+				<pre><b>Date:   </b>   {{i.start_date}} - {{i.last_date}}</pre><br>
+
+				<pre><b>Respected sir/madem, </b></pre><br>
+				
+				<pre>{{i.description}}</pre><br>
+				<pre>Please accept my application for leave from<br> {{i.start_date}}  -  {{i.last_date}}</pre><br>
+
+				<pre><b>Thanks and regards, </b></pre>
+				<pre>Your Sincerely</pre>
+
+				<pre>{{i.username}}</pre>
+
+		    <input type="submit" class="btn btn-small btn-primary" style="margin-left: 200px;margin-right: 200px;" name="approved{{i.id}}" value="Approved" placeholder="Approved"><br><br>
+				<input type="submit" class="btn btn-small pull-left btn-primary" style="margin-left: 200px;margin-right: 200px; " name="reject{{i.id}}" value="Reject" placeholder="">	
+				</form>
+				  </div>
+
+  </div>
+
+	{% elif i.approve %}
+		<div class="column">
+ 		   <div class="card">
+  
+			{% if i.approve == "Approved" %}
+				<pre style="text-align: center;">{{i.username}}</pre><br>
+				<pre style="color: green;text-align: center;">{{i.approve}}</pre>
+			{% elif i.approve == "Rejected" %}
+				<pre style="text-align: center;">{{i.username}}</pre><br>
+				<pre style="color: red;text-align: center;">{{i.approve}}</pre>
+			{% endif %}
+
+		</div>
+	</div>
+		{% endif %}
+  
+
+
+{% endfor %}
+{% else %}
+	<p>Reject</p>
+
+
+{% endif %}
+
+
+
+
+{% endblock content %}
