@@ -95,9 +95,9 @@ float: left;
 		<div class="column">
  		   <div class="card">
   
-			{% if i.approve == "Approved" %}
+			{% if i.approve == "Approve" %}
 				<pre style="text-align: center;">{{i.username}}</pre><br>
-				<pre style="color: green;text-align: center;">{{i.approve}}</pre>
+				<pre style="color: green;text-align: center;">Approved</pre>
 			{% elif i.approve == "Rejected" %}
 				<pre style="text-align: center;">{{i.username}}</pre><br>
 				<pre style="color: red;text-align: center;">{{i.approve}}</pre>
