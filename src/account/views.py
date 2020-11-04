@@ -136,8 +136,8 @@ def letter(request):
 def approve(request):
 	details = Employee.objects.all()
 	for obj in details:
-		if ('approved'+str(obj.id)) in request.POST:
-			obj.approve = "Approved"
+		if ('approve'+str(obj.id)) in request.POST:
+			obj.approve = "Approve"
 			obj.save()
 			break
 		elif ('reject'+str(obj.id)) in request.POST:
